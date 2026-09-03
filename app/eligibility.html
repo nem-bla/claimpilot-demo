@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClaimPilot — Eligibility gaps</title>
+<link rel="icon" href="../assets/favicon.svg" />
+<link rel="stylesheet" href="../css/shared.css" />
+<link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app-body">
+<div class="demo-banner">Synthetic demo — not real PHI</div>
+<div class="side-backdrop" id="backdrop" onclick="closeSide()"></div>
+<div class="app">
+  <aside class="side" id="side">
+    <a class="lockup" href="../index.html">
+      <img src="../assets/mark.svg" width="28" height="28" alt="" />
+      <span class="word ui">ClaimPilot</span>
+    </a>
+    <nav>
+      <a class="" href="dashboard.html">Claims</a>
+      <a class="" href="policy.html">Policy profile</a>
+      <a class="active" href="eligibility.html">Eligibility gaps</a>
+      <a class="" href="packet.html">Packets</a>
+      <a class="" href="elimination.html">Elimination</a>
+      <a href="../index.html">← Marketing site</a>
+    </nav>
+    <div class="foot">Synthetic demo · no PHI<br>Peachtree Care Partners</div>
+  </aside>
+  <section class="main">
+    <div class="top">
+      <div style="display:flex;align-items:center">
+        <button class="side-toggle" type="button" onclick="openSide()">Menu</button>
+        <div class="crumb"><a href="dashboard.html">Claims</a> / Eleanor Vance / Eligibility gaps</div>
+      </div>
+      <div class="who">Peachtree Care Partners <div class="avatar">PC</div></div>
+    </div>
+    <div class="content">
+      <h1>Eligibility gap list</h1>
+      <p class="lede">Eleanor Vance · Genworth · gaps are listed as gaps — never “eligible” or “approved”</p>
+      <div class="banner flag">
+        <span>ClaimPilot does not determine coverage. This list compares policy language to care documents so a human can clarify with the physician or family.</span>
+      </div>
+      <div class="card">
+        <div class="gap-card">
+          <div class="section-label" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft);margin-bottom:8px">Benefit trigger</div>
+          <h3>Policy requires 2 of 6 ADLs with hands-on assistance</h3>
+          <p>Docs support bathing and dressing. Toileting is standby. Clarify with physician.</p>
+          <p class="mono" style="margin-top:10px">p. 11 · Policy · Plan of care p. 2–3</p>
+          <div style="margin-top:12px"><span class="chip flag">Needs clarification</span></div>
+        </div>
+        <div class="gap-card">
+          <div class="section-label" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft);margin-bottom:8px">Provider</div>
+          <h3>Licensed home-care agency required for home setting</h3>
+          <p>Agency license on file (GA PHCP, synthetic). Visit logs name the same provider. No gap flagged here — human still confirms before packet export.</p>
+          <p class="mono" style="margin-top:10px">p. 22 · Policy · License 1 pp</p>
+          <div style="margin-top:12px"><span class="chip high">Docs aligned</span></div>
+        </div>
+        <div class="gap-card">
+          <div class="section-label" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft);margin-bottom:8px">Physician statement</div>
+          <h3>Carrier intake kit requires a physician statement</h3>
+          <p>Progress notes exist; a signed physician statement matching the claim form does not. List as gap. Do not invent the form.</p>
+          <p class="mono" style="margin-top:10px">Intake kit · missing artifact</p>
+          <div style="margin-top:12px"><span class="chip stalled">Blocker gap</span></div>
+        </div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn btn-sage" href="packet.html">Continue to packet</a>
+        <a class="btn btn-ghost" href="policy.html">Back to policy profile</a>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+function openSide(){document.getElementById('side').classList.add('open');document.getElementById('backdrop').classList.add('show')}
+function closeSide(){document.getElementById('side').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}
+document.querySelectorAll('.btn-sage.confirm-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const row=btn.closest('.field');
+    if(!row) return;
+    row.classList.remove('low'); row.classList.add('confirmed');
+    const chip=row.querySelector('.chip');
+    if(chip){chip.className='chip high';chip.textContent='Confirmed'}
+    btn.textContent='Confirmed'; btn.disabled=true;
+  });
+});
+</script>
+</body>
+</html>
