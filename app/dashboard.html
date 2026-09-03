@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClaimPilot — Claims dashboard</title>
+<link rel="icon" href="../assets/favicon.svg" />
+<link rel="stylesheet" href="../css/shared.css" />
+<link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app-body">
+<div class="demo-banner">Synthetic demo — not real PHI</div>
+<div class="side-backdrop" id="backdrop" onclick="closeSide()"></div>
+<div class="app">
+  <aside class="side" id="side">
+    <a class="lockup" href="../index.html">
+      <img src="../assets/mark.svg" width="28" height="28" alt="" />
+      <span class="word ui">ClaimPilot</span>
+    </a>
+    <nav>
+      <a class="active" href="dashboard.html">Claims</a>
+      <a class="" href="policy.html">Policy profile</a>
+      <a class="" href="eligibility.html">Eligibility gaps</a>
+      <a class="" href="packet.html">Packets</a>
+      <a class="" href="elimination.html">Elimination</a>
+      <a href="../index.html">← Marketing site</a>
+    </nav>
+    <div class="foot">Synthetic demo · no PHI<br>Peachtree Care Partners</div>
+  </aside>
+  <section class="main">
+    <div class="top">
+      <div style="display:flex;align-items:center">
+        <button class="side-toggle" type="button" onclick="openSide()">Menu</button>
+        <div class="crumb">Claims</div>
+      </div>
+      <div class="who">Peachtree Care Partners <div class="avatar">PC</div></div>
+    </div>
+    <div class="content">
+      <h1>Claims</h1>
+      <p class="lede">3 open · next deadline 15 Sep 2026 · Eleanor Vance · physician statement</p>
+      <div class="toolbar">
+        <span class="filter on">All 3</span>
+        <span class="filter">Preparing 1</span>
+        <span class="filter">Elimination 1</span>
+        <span class="filter">Paying 1</span>
+        <span style="margin-left:auto"><a class="btn btn-sage" href="policy.html">Open Eleanor Vance</a></span>
+      </div>
+      <div class="card">
+        <table class="grid">
+          <thead>
+            <tr><th>Client</th><th>Carrier</th><th>Status</th><th>Next deadline</th><th>Packet</th><th>Owner</th></tr>
+          </thead>
+          <tbody>
+            <tr class="clickable" onclick="location.href='policy.html'">
+              <td><div class="name">Eleanor Vance</div><div class="meta">Home care · ADLs under review</div></td>
+              <td>Genworth</td>
+              <td><span class="chip preparing">Preparing</span></td>
+              <td><span class="due warn">15 Sep · physician stmt</span></td>
+              <td><span class="bar"><i style="width:78%"></i></span> 7/9</td>
+              <td>A. Okonkwo</td>
+            </tr>
+            <tr class="clickable" onclick="location.href='elimination.html'">
+              <td><div class="name">June Park</div><div class="meta">Elimination clock</div></td>
+              <td>Northwestern Mutual</td>
+              <td><span class="chip elimination">Elimination</span></td>
+              <td>Day 47 of 90 · 28 Oct</td>
+              <td><span class="bar"><i style="width:66%"></i></span> 6/9</td>
+              <td>M. Chen</td>
+            </tr>
+            <tr class="clickable" onclick="location.href='packet.html'">
+              <td><div class="name">Ruth Calder</div><div class="meta">AOB on file</div></td>
+              <td>Genworth</td>
+              <td><span class="chip paying">Paying</span></td>
+              <td>1 Oct · invoice cadence</td>
+              <td><span class="bar"><i style="width:89%"></i></span> 8/9</td>
+              <td>M. Chen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="meta" style="margin-top:16px">All names and policies are synthetic. Click a row to review the packet workflow.</p>
+    </div>
+  </section>
+</div>
+<script>
+function openSide(){document.getElementById('side').classList.add('open');document.getElementById('backdrop').classList.add('show')}
+function closeSide(){document.getElementById('side').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}
+document.querySelectorAll('.btn-sage.confirm-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const row=btn.closest('.field');
+    if(!row) return;
+    row.classList.remove('low'); row.classList.add('confirmed');
+    const chip=row.querySelector('.chip');
+    if(chip){chip.className='chip high';chip.textContent='Confirmed'}
+    btn.textContent='Confirmed'; btn.disabled=true;
+  });
+});
+</script>
+</body>
+</html>

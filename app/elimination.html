@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClaimPilot — Elimination tracker</title>
+<link rel="icon" href="../assets/favicon.svg" />
+<link rel="stylesheet" href="../css/shared.css" />
+<link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app-body">
+<div class="demo-banner">Synthetic demo — not real PHI</div>
+<div class="side-backdrop" id="backdrop" onclick="closeSide()"></div>
+<div class="app">
+  <aside class="side" id="side">
+    <a class="lockup" href="../index.html">
+      <img src="../assets/mark.svg" width="28" height="28" alt="" />
+      <span class="word ui">ClaimPilot</span>
+    </a>
+    <nav>
+      <a class="" href="dashboard.html">Claims</a>
+      <a class="" href="policy.html">Policy profile</a>
+      <a class="" href="eligibility.html">Eligibility gaps</a>
+      <a class="" href="packet.html">Packets</a>
+      <a class="active" href="elimination.html">Elimination</a>
+      <a href="../index.html">← Marketing site</a>
+    </nav>
+    <div class="foot">Synthetic demo · no PHI<br>Peachtree Care Partners</div>
+  </aside>
+  <section class="main">
+    <div class="top">
+      <div style="display:flex;align-items:center">
+        <button class="side-toggle" type="button" onclick="openSide()">Menu</button>
+        <div class="crumb"><a href="dashboard.html">Claims</a> / June Park / Elimination</div>
+      </div>
+      <div class="who">Peachtree Care Partners <div class="avatar">PC</div></div>
+    </div>
+    <div class="content">
+      <h1>Elimination tracker <span style="font-size:14px;color:var(--slate-soft);font-family:var(--sans)">v0</span></h1>
+      <p class="lede">June Park · Northwestern Mutual · synthetic · calendar-day clock</p>
+      <div class="card tracker">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft)">Elimination period</div>
+            <div style="font-family:var(--serif);font-size:32px;margin-top:4px">Day 47 of 90</div>
+            <p class="meta">Started 13 Aug 2026 · projected end 28 Oct 2026 if consecutive calendar days continue</p>
+          </div>
+          <span class="chip elimination">In elimination</span>
+        </div>
+        <div class="track-bar"><i style="width:52%"></i></div>
+        <div class="track-stats">
+          <div class="stat"><div class="n">47</div><div class="l">Days counted</div></div>
+          <div class="stat"><div class="n">43</div><div class="l">Days remaining</div></div>
+          <div class="stat"><div class="n">12</div><div class="l">Service days logged</div></div>
+        </div>
+        <div class="dl" style="margin-top:24px">
+          <div><span>Policy definition (cited)</span><strong class="mono">p. 14 · 90 calendar days</strong></div>
+          <div><span>Eligible provider days only?</span><strong>Confirm — flagged low confidence</strong></div>
+          <div><span>Next check-in</span><strong>22 Sep 2026 · invoice + visit log</strong></div>
+          <div><span>Human note</span><strong>Do not call the carrier from this screen</strong></div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn btn-sage" href="dashboard.html">Back to claims</a>
+          <a class="btn btn-ghost" href="policy.html">Compare Eleanor Vance policy</a>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:16px">v0 tracks counted days and the cited definition. It does not determine whether benefits have begun.</p>
+    </div>
+  </section>
+</div>
+<script>
+function openSide(){document.getElementById('side').classList.add('open');document.getElementById('backdrop').classList.add('show')}
+function closeSide(){document.getElementById('side').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}
+document.querySelectorAll('.btn-sage.confirm-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const row=btn.closest('.field');
+    if(!row) return;
+    row.classList.remove('low'); row.classList.add('confirmed');
+    const chip=row.querySelector('.chip');
+    if(chip){chip.className='chip high';chip.textContent='Confirmed'}
+    btn.textContent='Confirmed'; btn.disabled=true;
+  });
+});
+</script>
+</body>
+</html>
