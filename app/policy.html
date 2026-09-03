@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClaimPilot — Policy profile</title>
+<link rel="icon" href="../assets/favicon.svg" />
+<link rel="stylesheet" href="../css/shared.css" />
+<link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app-body">
+<div class="demo-banner">Synthetic demo — not real PHI</div>
+<div class="side-backdrop" id="backdrop" onclick="closeSide()"></div>
+<div class="app">
+  <aside class="side" id="side">
+    <a class="lockup" href="../index.html">
+      <img src="../assets/mark.svg" width="28" height="28" alt="" />
+      <span class="word ui">ClaimPilot</span>
+    </a>
+    <nav>
+      <a class="" href="dashboard.html">Claims</a>
+      <a class="active" href="policy.html">Policy profile</a>
+      <a class="" href="eligibility.html">Eligibility gaps</a>
+      <a class="" href="packet.html">Packets</a>
+      <a class="" href="elimination.html">Elimination</a>
+      <a href="../index.html">← Marketing site</a>
+    </nav>
+    <div class="foot">Synthetic demo · no PHI<br>Peachtree Care Partners</div>
+  </aside>
+  <section class="main">
+    <div class="top">
+      <div style="display:flex;align-items:center">
+        <button class="side-toggle" type="button" onclick="openSide()">Menu</button>
+        <div class="crumb"><a href="dashboard.html">Claims</a> / Eleanor Vance / Policy profile</div>
+      </div>
+      <div class="who">Peachtree Care Partners <div class="avatar">PC</div></div>
+    </div>
+    <div class="content">
+      <h1>Eleanor Vance</h1>
+      <p class="lede">Genworth · Policy GNW-44821 (synthetic) · Status <span class="chip preparing">Preparing</span></p>
+      <div class="banner flag">
+        <span><strong>1 field below 60% confidence.</strong> Confirm or correct before the packet can be marked complete. Human review is required — nothing auto-files.</span>
+        <span class="chip flag">Low — confirm</span>
+      </div>
+      <div class="split">
+        <div class="card">
+          <div class="field head"><span>Field</span><span>Value</span><span>Confidence</span><span>Citation</span><span></span></div>
+          <div class="field">
+            <div class="label">Daily maximum</div>
+            <div class="value">$180 / day</div>
+            <span class="chip high">High 96%</span>
+            <span class="mono">p. 4 · Policy</span>
+            <div><button class="btn btn-sage btn-sm confirm-btn" type="button">Confirm</button> <button class="btn btn-quiet btn-sm" type="button">Edit</button></div>
+          </div>
+          <div class="field">
+            <div class="label">Benefit trigger</div>
+            <div class="value">2 of 6 ADLs or cognitive</div>
+            <span class="chip high">High 91%</span>
+            <div><button class="btn btn-sage btn-sm confirm-btn" type="button">Confirm</button> <button class="btn btn-quiet btn-sm" type="button">Edit</button></div>
+          </div>
+          <div class="field low">
+            <div class="label">Elimination period</div>
+            <div class="value">90 calendar days?</div>
+            <span class="chip flag">Low 54%</span>
+            <span class="mono">p. 14 · Policy</span>
+            <div><button class="btn btn-sage btn-sm confirm-btn" type="button">Confirm</button> <button class="btn btn-quiet btn-sm" type="button">Edit</button></div>
+          </div>
+          <div class="field">
+            <div class="label">Eligible setting</div>
+            <div class="value">Home care · licensed agency</div>
+            <span class="chip high">High 87%</span>
+            <span class="mono">p. 22 · Policy</span>
+            <div><button class="btn btn-sage btn-sm confirm-btn" type="button">Confirm</button> <button class="btn btn-quiet btn-sm" type="button">Edit</button></div>
+          </div>
+          <div class="field">
+            <div class="label">Inflation rider</div>
+            <div class="value">Simple 5%</div>
+            <span class="chip review">Review 72%</span>
+            <span class="mono">p. 7 · Schedule</span>
+            <div><button class="btn btn-sage btn-sm confirm-btn" type="button">Confirm</button> <button class="btn btn-quiet btn-sm" type="button">Edit</button></div>
+          </div>
+          <div class="field">
+            <div class="label">Proof of loss</div>
+            <div class="value">90 days from notice</div>
+            <span class="chip high">High 88%</span>
+            <span class="mono">p. 31 · Policy</span>
+            <div><button class="btn btn-sage btn-sm confirm-btn" type="button">Confirm</button> <button class="btn btn-quiet btn-sm" type="button">Edit</button></div>
+          </div>
+        </div>
+        <aside class="src">
+          <h3>Source · Policy p. 14</h3>
+          <p class="mono" style="margin-bottom:10px">GNW-44821 · synthetic</p>
+          <div class="page">
+            <p>SECTION 4 — ELIMINATION PERIOD</p>
+            <p style="margin-top:10px">Benefits are payable after the Insured has satisfied the Elimination Period.</p>
+            <p style="margin-top:10px"><span class="hl">The Elimination Period is 90 days.</span> Days may be consecutive or accumulated, depending on the plan of care in force.</p>
+            <p style="margin-top:10px">We will not count days of care that are not provided by an Eligible Provider as defined in Section 6.</p>
+            <p style="margin-top:10px;color:var(--flag);font-weight:600">Ambiguity: calendar days vs. service days is not explicit on this page. Confirm against the schedule or rider.</p>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-sage btn-sm" href="eligibility.html">View eligibility gaps</a>
+            <a class="btn btn-ghost btn-sm" href="packet.html">Open packet</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+function openSide(){document.getElementById('side').classList.add('open');document.getElementById('backdrop').classList.add('show')}
+function closeSide(){document.getElementById('side').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}
+document.querySelectorAll('.btn-sage.confirm-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const row=btn.closest('.field');
+    if(!row) return;
+    row.classList.remove('low'); row.classList.add('confirmed');
+    const chip=row.querySelector('.chip');
+    if(chip){chip.className='chip high';chip.textContent='Confirmed'}
+    btn.textContent='Confirmed'; btn.disabled=true;
+  });
+});
+</script>
+</body>
+</html>
