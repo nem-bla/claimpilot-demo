@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClaimPilot — Carrier packet</title>
+<link rel="icon" href="../assets/favicon.svg" />
+<link rel="stylesheet" href="../css/shared.css" />
+<link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app-body">
+<div class="demo-banner">Synthetic demo — not real PHI</div>
+<div class="side-backdrop" id="backdrop" onclick="closeSide()"></div>
+<div class="app">
+  <aside class="side" id="side">
+    <a class="lockup" href="../index.html">
+      <img src="../assets/mark.svg" width="28" height="28" alt="" />
+      <span class="word ui">ClaimPilot</span>
+    </a>
+    <nav>
+      <a class="" href="dashboard.html">Claims</a>
+      <a class="" href="policy.html">Policy profile</a>
+      <a class="" href="eligibility.html">Eligibility gaps</a>
+      <a class="active" href="packet.html">Packets</a>
+      <a class="" href="elimination.html">Elimination</a>
+      <a href="../index.html">← Marketing site</a>
+    </nav>
+    <div class="foot">Synthetic demo · no PHI<br>Peachtree Care Partners</div>
+  </aside>
+  <section class="main">
+    <div class="top">
+      <div style="display:flex;align-items:center">
+        <button class="side-toggle" type="button" onclick="openSide()">Menu</button>
+        <div class="crumb"><a href="dashboard.html">Claims</a> / Eleanor Vance / Genworth packet</div>
+      </div>
+      <div class="who">Peachtree Care Partners <div class="avatar">PC</div></div>
+    </div>
+    <div class="content">
+      <h1>Genworth packet checklist</h1>
+      <p class="lede">Eleanor Vance · Genworth · human review required · 7 of 9 ready, 1 blocker</p>
+      <div class="split-packet">
+        <div class="card">
+          <div class="item head"><span></span><span>Artifact</span><span>Source</span><span>Status</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Policy schedule</div><div class="meta">Elimination, maximums, riders</div></div><span class="mono">3 pp</span><span class="chip paying">Ready</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Claim form (fields mapped)</div><div class="meta">Only where sources support the answer</div></div><span class="mono">p. 1–4</span><span class="chip paying">Ready</span></div>
+          <div class="item blocker"><div class="check"></div><div><div class="name">Physician statement</div><div class="meta">Required by this carrier’s intake kit</div></div><span class="mono">—</span><span class="chip stalled">Blocker</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Plan of care</div><div class="meta">ADLs: bathing, dressing; toileting standby</div></div><span class="mono">p. 1–6</span><span class="chip paying">Ready</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Itemized invoices</div><div class="meta">Aug 2026 · licensed agency</div></div><span class="mono">2 pp</span><span class="chip paying">Ready</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Visit logs</div><div class="meta">Mapped to benefit triggers</div></div><span class="mono">12 visits</span><span class="chip paying">Ready</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Provider license</div><div class="meta">Georgia PHCP · synthetic</div></div><span class="mono">1 pp</span><span class="chip paying">Ready</span></div>
+          <div class="item"><div class="check"></div><div><div class="name">POA / authorized representative</div><div class="meta">Optional if family is filing</div></div><span class="mono">—</span><span class="chip preparing">Gap</span></div>
+          <div class="item"><div class="check on"></div><div><div class="name">Citation appendix</div><div class="meta">Every extracted fact → page</div></div><span class="mono">8 cites</span><span class="chip paying">Ready</span></div>
+        </div>
+        <aside>
+          <div class="banner stalled" style="display:block">
+            <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--stalled);margin-bottom:8px">Cannot auto-submit</h3>
+            <p style="font-size:14px;line-height:1.5">Physician statement is missing. The carrier intake desk will kick this back. A human can still review &amp; export a draft packet for the file.</p>
+            <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-disabled" type="button" disabled>Submit packet</button>
+              <button class="btn btn-sage" type="button" id="exportBtn">Review &amp; export</button>
+              <button class="btn btn-ghost btn-sm" type="button">Waiting on physician</button>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px;padding:18px 20px;overflow:visible">
+            <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft)">Completeness</div>
+            <div class="complete">7 / 9</div>
+            <div class="bar" style="width:100%;height:8px"><i style="width:78%"></i></div>
+            <div class="dl">
+              <div><span>Next deadline</span><strong style="color:#8A6A12">15 Sep 2026</strong></div>
+              <div><span>Blockers</span><strong style="color:var(--stalled)">1 · physician statement</strong></div>
+              <div><span>Gaps (non-blocking)</span><strong>1 · POA</strong></div>
+              <div><span>Human-confirmed fields</span><strong>11 / 14</strong></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="success-modal" id="exportModal" role="dialog" aria-modal="true">
+        <div class="panel">
+          <div class="chip paying">HITL export</div>
+          <h2>Draft packet ready</h2>
+          <p style="color:var(--slate);font-size:14px">Synthetic Genworth packet checklist exported for Eleanor Vance. No file left this browser in production — this is a demo success state.</p>
+          <div style="margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-sage" type="button" onclick="document.getElementById('exportModal').classList.remove('show')">Done</button>
+            <a class="btn btn-ghost" href="elimination.html">View elimination tracker</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+function openSide(){document.getElementById('side').classList.add('open');document.getElementById('backdrop').classList.add('show')}
+function closeSide(){document.getElementById('side').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}
+document.querySelectorAll('.btn-sage.confirm-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const row=btn.closest('.field');
+    if(!row) return;
+    row.classList.remove('low'); row.classList.add('confirmed');
+    const chip=row.querySelector('.chip');
+    if(chip){chip.className='chip high';chip.textContent='Confirmed'}
+    btn.textContent='Confirmed'; btn.disabled=true;
+  });
+});
+document.getElementById('exportBtn')?.addEventListener('click',()=>{
+  document.getElementById('exportModal').classList.add('show');
+  const blob=new Blob(["ClaimPilot synthetic packet export\nClient: Eleanor Vance\nCarrier: Genworth\nStatus: draft — physician statement missing\n"],{type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='claimpilot-eleanor-vance-genworth-draft.txt'; a.click();
+});
+</script>
+</body>
+</html>
